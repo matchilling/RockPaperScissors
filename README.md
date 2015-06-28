@@ -26,20 +26,18 @@ The following table shows all nine possible combinations.
 
 <table>
 	<thead>
-	<tr>
-		<th>Input</th>
-		<th></th>
-		<th>Result</th>
-		<th></th>
-	</tr>
+		<tr>
+			<th colspan="2">Input</th>
+			<th colspan="2">Result</th>
+		</tr>
+		<tr>
+			<th>Client 1</th>
+			<th>Client 2</th>
+			<th>Client 1</th>
+			<th>Client 2</th>
+		</tr>	
 	</thead>
 	<tbody>
-		<tr>
-			<td>Client 1</td>
-			<td>Client 2</td>
-			<td>Client 1</td>
-			<td>Client 2</td>
-		</tr>
 		<tr>
 			<td>R</td>
 			<td>R</td>
