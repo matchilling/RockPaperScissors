@@ -5,28 +5,97 @@ The purpose of the program is to provide a network version of the hand game [Roc
 ![Execution of the server class script (Server.java)](/resources/images/Server.png "Execution of the server class script (Server.java)")
 Illustr. 1: Execution of the server class script (Server.java)
 
-By executing the server class (Server.java) the user will be prompt to specify a port number which has to be an integer value strictly greater than zero and less than or equal to 65535. Alternatively “0” is accepted for the standard port (1337) . After submitting the script runs a little validation and checks if the value is within the defined range (0 > x <= 65535) and sets the port value. So far no further validation is implemented, we're not verifying for example if the selected port is reserved or just busy at the moment. If no exception is thrown the program dumps a status message to inform the user, that the server is running on the specified port number.
+By executing the server class (Server.java) the user will be prompt to specify a port number which has to be an integer value
+strictly greater than zero and less than or equal to 65535. Alternatively “0” is accepted for the standard port (1337) . After submitting the script runs a little validation and checks if the value is within the defined range (0 > x <= 65535) and sets
+the port value. So far no further validation is implemented, we're not verifying for example if the selected port is reserved
+or just busy at the moment. If no exception is thrown the program dumps a status message to inform the user, that the server is running on the specified port number.
 
-Since the socket is not closed the server remains in a while() loop waiting for two incoming connections (player one and player two). A corresponding status message will be provided if a new client connects.
+Since the socket is not closed the server remains in a while() loop waiting for two incoming connections (player one and player
+two). A corresponding status message will be provided if a new client connects.
 
-The server accepts an input stream from both clients. Once the players have sent their packets, the program computes a result based on the user inputs (R – rock, S – scissors, P - paper) and the following rule set. Rock beats scissors, scissors beats paper, paper beats rock.
+The server accepts an input stream from both clients. Once the players have sent their packets, the program computes a result
+based on the user inputs (R – rock, S – scissors, P - paper) and the following rule set. Rock beats scissors, scissors beats
+paper, paper beats rock.
 
-If the characters received from client one and client two are the same, then the server sends back to both clients the string "DRAW". If the server receives “R” from client one and “S” from client two, it sends the string “YOU WIN" to client one and the string "YOU LOSE" to client two. If the server receives “S” from client one and “R” from client two, it sends the string "YOU LOSE" to client one and the string "YOU WIN" to client two.
+If the characters received from client one and client two are the same, then the server sends back to both clients the string
+"DRAW". If the server receives “R” from client one and “S” from client two, it sends the string “YOU WIN" to client one and the
+string "YOU LOSE" to client two. If the server receives “S” from client one and “R” from client two, it sends the string "YOU
+LOSE" to client one and the string "YOU WIN" to client two.
 
 The following table shows all nine possible combinations.
 
-| Input | | Result |
-| - | - | - |
-| Client 1 | Client 2 | Client 1 | Client 2 |
-| R | R | Draw | Draw |
-| S | S | Draw | Draw |
-| P | P | Draw | Draw |
-| R | S | You Win | You Lose |
-| S | R | You Lose | You Win |
-| R | P | You Lose | You Win |
-| P | R | You Win | You Lose |
-| S | P | You Win | You Lose |
-| P | S | You Lose | You Win |
+<table>
+	<thead>
+	<tr>
+		<th>Input</th>
+		<th></th>
+		<th>Result</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Client 1</td>
+			<td>Client 2</td>
+			<td>Client 1</td>
+			<td>Client 2</td>
+		</tr>
+		<tr>
+			<td>R</td>
+			<td>R</td>
+			<td>Draw</td>
+			<td>Draw</td>
+		</tr>
+		<tr>
+			<td>S</td>
+			<td>S</td>
+			<td>Draw</td>
+			<td>Draw</td>
+		</tr>
+		<tr>
+			<td>P</td>
+			<td>P</td>
+			<td>Draw</td>
+			<td>Draw</td>
+		</tr>
+		<tr>
+			<td>R</td>
+			<td>S</td>
+			<td>You Win</td>
+			<td>You Lose</td>
+		</tr>
+		<tr>
+			<td>S</td>
+			<td>R</td>
+			<td>You Lose</td>
+			<td>You Win</td>
+		</tr>
+		<tr>
+			<td>R</td>
+			<td>P</td>
+			<td>You Lose</td>
+			<td>You Win</td>
+		</tr>
+		<tr>
+			<td>P</td>
+			<td>R</td>
+			<td>You Win</td>
+			<td>You Lose</td>
+		</tr>
+		<tr>
+			<td>S</td>
+			<td>P</td>
+			<td>You Win</td>
+			<td>You Lose</td>
+		</tr>
+		<tr>
+			<td>P</td>
+			<td>S</td>
+			<td>You Lose</td>
+			<td>You Win</td>
+		</tr>
+	</tbody>
+</table>
 
 The result will be echoed out and a correspondent massage will be send to each client. Afterwards the server waits again for two clients to connect.
 
@@ -37,7 +106,9 @@ Illustr. 2: Client one chooses "R" and wins
 ![Client two chooses "S" and loses](/resources/images/Client2.png "Client two chooses "S" and loses")
 Illustr. 3: Client two chooses "S" and loses
 
-The client class creates a connection to the server on the local host at the default port 1337. If the connection has been successfully established the script prompts the user to choose a correspondent character to (R)ock, (P)aper or (S)cissors. By typing “-rules” the rule set can be displayed alternatively. After sending the character to the server via the TCP protocol the client waits for a reply from the server and a notification will be dumped.
+The client class creates a connection to the server on the local host at the default port 1337. If the connection has been successfully established the script prompts the user to choose a correspondent character to (R)ock, (P)aper or (S)cissors. By
+typing “-rules” the rule set can be displayed alternatively. After sending the character to the server via the TCP protocol
+the client waits for a reply from the server and a notification will be dumped.
 
 Once the client receives a response from the server the message will be printed to the screen and the connection will be closed.
 
