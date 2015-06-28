@@ -1,11 +1,11 @@
 # RockPaperScissors TCP network edition in JAVA
-The purpose of the program is to provide a network version of the hand game [Rock-paper-scissors](https://en.wikipedia.org/wiki/Rock-paper-scissors) :fist: :hand: :v: using the [TCP protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
+The purpose of the program is to provide a network version of the hand game [Rock-paper-scissors](https://en.wikipedia.org/wiki/Rock-paper-scissors) :fist: :hand: :v: using the [Transmission Control Protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
 
 ## The server class – Server.java
 ![Execution of the server class script (Server.java)](/resources/images/Server.png "Execution of the server class script (Server.java)")
 Illustr. 1: Execution of the server class script (Server.java)
 
-By executing the server class (Server.java) the user will be prompt to specify a port number which has to be an integer value strictly greater than zero and less than or equal to 65535. Alternatively “0” is accepted for the standard port (1337) . After submitting the script runs a little validation and checks if the value is within the defined range (0 > x <= 65535) and sets the port value. So far no further validation is implemented, we're not verifying for example if the selected port is reserved or just busy at the moment. If no exception is thrown the program dumps a status message to inform the user, that the server is running on the specified port number.
+By executing the server class ([Server.java](/src/PaperScissorsStone/Server.java)) the user will be prompt to specify a port number which has to be an integer value strictly greater than zero and less than or equal to 65535. Alternatively “0” is accepted for the standard port (1337) . After submitting the script runs a little validation and checks if the value is within the defined range (0 > x <= 65535) and sets the port value. So far no further validation is implemented, we're not verifying for example if the selected port is reserved or just busy at the moment. If no exception is thrown the program dumps a status message to inform the user, that the server is running on the specified port number.
 
 Since the socket is not closed the server remains in a while() loop waiting for two incoming connections (player one and player two). A corresponding status message will be provided if a new client connects.
 
@@ -95,7 +95,7 @@ Illustr. 2: Client one chooses "R" and wins
 ![Client two chooses "S" and loses](/resources/images/Client2.png "Client two chooses "S" and loses")
 Illustr. 3: Client two chooses "S" and loses
 
-The client class creates a connection to the server on the local host at the default port 1337. If the connection has been successfully established the script prompts the user to choose a correspondent character to (R)ock, (P)aper or (S)cissors. By typing “-rules” the rule set can be displayed alternatively. After sending the character to the server via the TCP protocol the client waits for a reply from the server and a notification will be dumped.
+The client class ([Client.java](/src/PaperScissorsStone/Client.java)) creates a connection to the server on the local host at the default port 1337. If the connection has been successfully established the script prompts the user to choose a correspondent character to (R)ock, (P)aper or (S)cissors. By typing “-rules” the rule set can be displayed alternatively. After sending the character to the server via the TCP protocol the client waits for a reply from the server and a notification will be dumped.
 
 Once the client receives a response from the server the message will be printed to the screen and the connection will be closed.
 
