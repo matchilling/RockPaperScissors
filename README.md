@@ -1,4 +1,4 @@
-# RockPaperScissors TCP network edition in JAVA
+# Rock-Paper-Scissors TCP network edition in JAVA
 The purpose of the program is to provide a network version of the hand game [Rock-paper-scissors](https://en.wikipedia.org/wiki/Rock-paper-scissors) :fist: :hand: :v: using the [Transmission Control Protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
 
 ## The server class – Server.java
